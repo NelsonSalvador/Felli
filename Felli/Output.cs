@@ -2,8 +2,13 @@ using System;
 
 namespace Felli
 {
-    public class Board
+    public class Output
     {
+        public static void instructions()
+        {
+
+        }
+
         public static void printBoard()
         {
             for (int i = 0; i < 38; i++)
@@ -21,13 +26,21 @@ namespace Felli
                     Console.ResetColor();
                     Console.Write("        ");
                 }
+                //Peças
                 else if ((i >= 3 && i < 6) || (i >= 31 && i < 34))
                 {
                     if (i == 3 || i == 31)
                         Console.WriteLine("");
 
                     Console.BackgroundColor = ConsoleColor.Gray;
-                    Console.Write("   P   ");
+                    Console.Write("  ");
+
+                    game.positions(i);
+                    Console.Write("   ");
+
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.Write("  ");
+
                     Console.ResetColor();
                     Console.Write("        ");
                 }
@@ -64,7 +77,13 @@ namespace Felli
                     }
 
                     Console.BackgroundColor = ConsoleColor.Gray;
-                    Console.Write("   p   ");
+                    Console.Write("  ");
+
+                    game.positions(i);
+                    Console.Write("   ");
+
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.Write("  ");
                     Console.ResetColor();
                     Console.Write(" ");
                 }

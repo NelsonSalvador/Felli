@@ -6,7 +6,7 @@ namespace Felli
     {
         static void Main(string[] args)
         {
-            Board.printBoard();
+            Output.printBoard();
         }
     }
 }

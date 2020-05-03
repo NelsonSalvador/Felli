@@ -6,10 +6,22 @@ namespace Felli
     {
         public static void positions(int i)
         {
-            if (i == 3 || i == 4 || i == 5 || i == 12 || i == 13 || i == 14)
-                Console.BackgroundColor = ConsoleColor.Black;
-            else if (i == 22 || i == 23 || i == 24 || i == 31 || i == 32 || i == 33)
-                Console.BackgroundColor = ConsoleColor.White;
+            Positions a = new Positions();
+
+            int[] b = a.GetB();
+            int[] w = a.GetW();
+
+            foreach(int j in b)
+            {
+                if (i == j)
+                    Console.BackgroundColor = ConsoleColor.Black;
+            }
+
+            foreach(int j in w)
+            {
+                if (i == j)
+                    Console.BackgroundColor = ConsoleColor.White;
+            }
         }
     }
 }

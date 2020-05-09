@@ -6,7 +6,20 @@ namespace Felli
     {
         public static void instructions()
         {
-
+            Console.WriteLine("\n Welcome to Felli");
+            Console.Write("The main goal is to capture all of your opponents ");
+            Console.Write("pieces by hoping over them or by making sure ");
+            Console.Write("they can't move \n");
+            Console.Write("You can only move one piece per turn, and there ");
+            Console.Write("must be an empty position on the board on which ");
+            Console.Write("you can land \n");
+            Console.Write("When refering to pieces please use b for black ");
+            Console.Write("and w for white \n\n");
+            Console.WriteLine("How to move your pieces: ");
+            Console.Write("Your first input will be used to select which ");
+            Console.Write("piece you wish to move, your second input ");
+            Console.Write("will be used to tell that piece where to move ");
+            Console.Write("Please pick a color to go first \n");
         }
 
         public static void printBoard()
@@ -118,6 +131,7 @@ namespace Felli
                     }
                 }
             }
+            Console.WriteLine(" ");
         }
     }
 }

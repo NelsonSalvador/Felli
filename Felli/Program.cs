@@ -6,7 +6,9 @@ namespace Felli
     {
         static void Main(string[] args)
         {
+            Output.instructions();
             Output.printBoard();
+            game.gameloop();
         }
     }
 }

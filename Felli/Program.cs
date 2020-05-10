@@ -6,7 +6,8 @@ namespace Felli
     {
         static void Main(string[] args)
         {
-            game.gameloop();
+            Positions a = new Positions();
+            game.gameloop(a);
         }
     }
 }

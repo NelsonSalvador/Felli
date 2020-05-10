@@ -41,7 +41,7 @@ namespace Felli
             Console.Write("Please pick a color to go first \n");
         }
 
-        public static void printBoard()
+        public static void printBoard(Positions a)
         {
             int peace;
             for (int i = 0; i < 38; i++)
@@ -68,7 +68,7 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    peace = game.positions(i);
+                    peace = game.positions(i, a);
                     Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
@@ -112,7 +112,7 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    peace = game.positions(i);
+                    peace = game.positions(i, a);
                     Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
@@ -142,11 +142,24 @@ namespace Felli
                     {
                         Console.WriteLine("");
                         Console.Write("               ");
+                        
                         Console.BackgroundColor = ConsoleColor.Gray;
+                        peace = game.positions(i, a);
                         if(j == 1)
-                            Console.Write("   M   ");
+                        {
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            Console.Write("  ");
+                            peace = game.positions(i, a);
+                            Console.Write(" {0} ", peace);
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            Console.Write("  ");
+                        }
+                            
                         else
+                        {
+                            Console.BackgroundColor = ConsoleColor.Gray;
                             Console.Write("       ");
+                        }
                         Console.ResetColor();
                     }
                 }

@@ -6,12 +6,11 @@ namespace Felli
     {
         public struct TurnInformation
         {
-            public string piece;
-            public string direction;
+            public int piece;
+            public char direction;
         }
-        public static int positions(int i)
+        public static int positions(int i, Positions a)
         {
-            Positions a = new Positions();
 
             int[] b = a.GetB();
             int[] w = a.GetW();
@@ -42,7 +41,7 @@ namespace Felli
             }
             return 0;
         }
-        public static void gameloop()
+        public static void gameloop(Positions a)
         {
             int turncounter;
             int turno = 0;
@@ -51,7 +50,7 @@ namespace Felli
             do
             {
                 Output.instructions();
-                Output.printBoard();
+                Output.printBoard(a);
                 if (gamestarted == false)
                 {
                     Output.startOutput();
@@ -75,8 +74,9 @@ namespace Felli
                 {
                     turncounter = turn(turno);
                     TurnInformation z;
-                    z.piece = Console.ReadLine();
-                    z.direction = Console.ReadLine();
+                    z.piece = Convert.ToInt32(Console.ReadLine());
+                    z.direction = Convert.ToChar(Console.ReadLine());
+                    a.SetPeace(z.piece, z.direction, turno);
                     turno++;
                 }
             } while (gameover == false);

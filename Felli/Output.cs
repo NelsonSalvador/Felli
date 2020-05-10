@@ -4,8 +4,27 @@ namespace Felli
 {
     public class Output
     {
+        public static void startOutput() =>
+            Console.WriteLine("Chosee the starting color (Black: b) (White: W): ");
+
+        public static void invalidOutput() =>
+            Console.WriteLine("Invalid Output");
+
+        public static void turnOutput(int turn)
+        {
+            if ((turn % 2) == 0)
+            {
+                Console.WriteLine("White pieces turn");
+            }
+            else
+            {
+                Console.WriteLine("Black pieces turn");
+            }
+        }
+
         public static void instructions()
         {
+            Console.Clear();
             Console.WriteLine("\n Welcome to Felli");
             Console.Write("The main goal is to capture all of your opponents ");
             Console.Write("pieces by hoping over them or by making sure ");
@@ -24,6 +43,7 @@ namespace Felli
 
         public static void printBoard()
         {
+            int peace;
             for (int i = 0; i < 38; i++)
             {
                 //Desenha os quadrados do topo e do fundo
@@ -48,8 +68,8 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    game.positions(i);
-                    Console.Write("   ");
+                    peace = game.positions(i);
+                    Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
@@ -92,8 +112,8 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    game.positions(i);
-                    Console.Write("   ");
+                    peace = game.positions(i);
+                    Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");

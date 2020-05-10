@@ -9,24 +9,38 @@ namespace Felli
             public string piece;
             public string direction;
         }
-        public static void positions(int i)
+        public static int positions(int i)
         {
             Positions a = new Positions();
 
             int[] b = a.GetB();
             int[] w = a.GetW();
+            int peace = 1;
 
             foreach(int j in b)
             {
                 if (i == j)
+                {
                     Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return peace;
+                }
+                peace += 1;
             }
+
+            peace = 1;
 
             foreach(int j in w)
             {
                 if (i == j)
+                {
                     Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    return peace;
+                }
+                peace ++;
             }
+            return 0;
         }
         public static void gameloop()
         {
@@ -36,49 +50,42 @@ namespace Felli
             bool gamestarted = false;
             do
             {
+                Output.instructions();
+                Output.printBoard();
                 if (gamestarted == false)
                 {
+                    Output.startOutput();
                     string firstplayer = Console.ReadLine();
                     if (firstplayer == "b")
                     {
-                        turn(1);
+                        turno = 1;
                         gamestarted = true;
                     }
                     else if (firstplayer == "w")
                     {
-                        turn(0);
+                        turno = 2;
                         gamestarted = true;
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Output");
+                        Output.invalidOutput();
                     }
                 }
                 else
                 {
-                    turno++;
                     turncounter = turn(turno);
                     TurnInformation z;
                     z.piece = Console.ReadLine();
                     z.direction = Console.ReadLine();
+                    turno++;
                 }
             } while (gameover == false);
         }
         public static int turn(int turn)
         {
-            if (turn %2 == 0)
-            {
-                Console.WriteLine("White pieces turn");
-                turn++;
-                return turn;
-            }
-            else
-            {
-                Console.Write(turn);
-                turn++;
-                Console.WriteLine("Black pieces turn");
-                return turn;
-            }
+            Output.turnOutput(turn);
+            turn++;
+            return turn;
         }
     }
 }

@@ -1,13 +1,16 @@
+using System;
 namespace Felli
 {
     public class Positions
     {
         private int[] b;
         private int[] w;
-        private int[] boardpos = new int[] {3, 4, 5, 12, 13, 14, 0, 18, 1, 22, 23, 24, 31, 32, 33};
+        private int[] boardpos = new int[] {3, 4, 5, 12, 13, 14, 18, 22, 23, 24, 31, 32, 33};
         public Positions ()
         {
+            //position of black pieces in the board
             b = new int[] {3, 4, 5, 12, 13, 14};
+            //position of white pieces in the board
             w = new int[] {22, 23, 24, 31, 32, 33};
         }
 
@@ -83,45 +86,94 @@ namespace Felli
                 case 'q':
                     foreach(int j in boardpos)
                     {
-                        if (j == bw[piece - 1])
+                        if( j == 12 || j == 33)
                         {
-                            bw[piece - 1] = boardpos[i - 4];
-                            break;
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i - 3];
+                                break;
+                            }
+                            i += 1;
                         }
-                        i += 1;
+                        else{
+
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i - 4];
+                                break;
+                            }
+                            i += 1;
+                        }
                     }
                     break;
                 case 'z':
                     foreach(int j in boardpos)
                     {
-                        if (j == bw[piece - 1])
+                        if( j == 5 || j == 22)
                         {
-                            bw[piece - 1] = boardpos[i + 2];
-                            break;
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i + 3];
+                                break;
+                            }
+                            i += 1;
                         }
-                        i += 1;
+                        else{
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i + 2];
+                                break;
+                            }
+                            i += 1;
+                        }
                     }
                     break;
                 case 'e':
                     foreach(int j in boardpos)
                     {
-                        if (j == bw[piece - 1])
+                        Console.WriteLine (i);
+                        if( j == 14 || j == 31)
                         {
-                            bw[piece - 1] = boardpos[i - 2];
-                            break;
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i - 3];
+                                break;
+                            }
+                            i += 1;
                         }
-                        i += 1;
+                        else
+                        {
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i - 2];
+                                break;
+                            }
+                            i += 1;
+                        }
                     }
                     break;
                 case 'x':
+                
                     foreach(int j in boardpos)
                     {
-                        if (j == bw[piece - 1])
+                        if( j == 3 || j == 24)
                         {
-                            bw[piece - 1] = boardpos[i + 4];
-                            break;
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i + 3];
+                                break;
+                            }
+                            i += 1;
                         }
-                        i += 1;
+                        else
+                        {
+                            if (j == bw[piece - 1])
+                            {
+                                bw[piece - 1] = boardpos[i + 4];
+                                break;
+                            }
+                            i += 1;
+                        }
                     }
                     break;
             }

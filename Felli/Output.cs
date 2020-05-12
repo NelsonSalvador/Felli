@@ -5,7 +5,7 @@ namespace Felli
     public class Output
     {
         public static void startOutput() =>
-            Console.WriteLine("Chosee the starting color (Black: b) (White: W): ");
+            Console.WriteLine("Chose the starting color (Black: b) (White: W): ");
 
         public static void invalidOutput() =>
             Console.WriteLine("Invalid Output");
@@ -24,7 +24,7 @@ namespace Felli
 
         public static void instructions()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("\n Welcome to Felli");
             Console.Write("The main goal is to capture all of your opponents ");
             Console.Write("pieces by hoping over them or by making sure ");

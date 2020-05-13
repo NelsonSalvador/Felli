@@ -47,6 +47,8 @@ namespace Felli
             int turno = 0;
             bool gameover = false;
             bool gamestarted = false;
+            bool validmove = false;
+            int validation = 0;
             do
             {
                 Output.instructions();
@@ -67,16 +69,24 @@ namespace Felli
                     }
                     else
                     {
-                        Output.invalidOutput();
+                        Output.invalidInput();
                     }
                 }
                 else
                 {
                     turncounter = turn(turno);
                     TurnInformation z;
-                    z.piece = Convert.ToInt32(Console.ReadLine());
-                    z.direction = Convert.ToChar(Console.ReadLine());
-                    a.SetPeace(z.piece, z.direction, turno);
+                    while (validmove == false)
+                    {
+                        z.piece = Convert.ToInt32(Console.ReadLine());
+                        z.direction = Convert.ToChar(Console.ReadLine());
+                        validation = a.SetPeace(z.piece, z.direction, turno);
+                        if (validation == 1)
+                        { 
+                            validmove = true;
+                        }
+                    }
+                    validmove = false;
                     turno++;
                 }
             } while (gameover == false);

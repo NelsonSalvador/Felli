@@ -1,5 +1,4 @@
 using System;
-
 namespace Felli
 {
     public class game
@@ -48,7 +47,11 @@ namespace Felli
             bool gamestarted = false;
             bool validmove = false;
             int validation = 0;
-
+            int lengthB;
+            int lengthW;
+            int[] b = a.GetB();
+            int[] w = a.GetW();
+            string second_input;
             
             do
             {
@@ -75,21 +78,41 @@ namespace Felli
                 }
                 else
                 {
-                    turncounter = turn(turno);
-                    TurnInformation w;
-                    while (validmove == false)
+                    lengthB = b.Length;
+                    lengthW = w.Length;
+                    if (lengthB != 0 && lengthW != 0)
                     {
-                        w.piece = Convert.ToInt32(Console.ReadLine());
-                        w.direction = Convert.ToChar(Console.ReadLine());
-                        a.SetPeace(w.piece, w.direction, turno, z);
-                        validation = z.Validation(-1);
-                        if (validation == 1)
-                        { 
-                            validmove = true;
+                        turncounter = turn(turno);
+                        TurnInformation c;
+                        while (validmove == false)
+                        {
+                            second_input = Console.ReadLine();
+                            if (int.TryParse(second_input, out c.piece))
+                            {
+                                c.direction = Convert.ToChar(Console.ReadLine());
+                                a.SetPeace(c.piece, c.direction, turno, z);
+                                validation = z.Validation(-1);
+                                if (validation == 1)
+                                { 
+                                    validmove = true;
+                                }
+                            }
+                            else if(second_input == "exit")
+                            {
+                                gamend();
+                            }
+                            else
+                            {
+                                Output.invalidInput();
+                            }
                         }
+                        validmove = false;
+                        turno++;   
                     }
-                    validmove = false;
-                    turno++;
+                    else
+                    {
+                        gameover = true;
+                    }
                 }
             } while (gameover == false);
         }
@@ -98,6 +121,10 @@ namespace Felli
             Output.turnOutput(turn);
             turn++;
             return turn;
+        }
+        public static void gamend()
+        {
+            System.Environment.Exit(0);
         }
     }
 }

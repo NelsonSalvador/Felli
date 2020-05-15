@@ -5,12 +5,12 @@ namespace Felli
     {
         private int[] b;
         private int[] w;
-        private int[] boardpos = new int[] { 0, 0, 0, 0, 3, 4, 5, 12, 13, 14, 
+        public int[] boardpos = new int[] { 0, 0, 0, 0, 3, 4, 5, 12, 13, 14, 
                                 0, 18, 0, 22, 23, 24, 31, 32, 33, 0, 0, 0, 0};
         public Positions ()
         {
             //position of black pieces in the board
-            b = new int[] {3, 4, 5, 12, 13, 14};
+            b = new int[] {3, 4, 5, 12};
             //position of white pieces in the board
             w = new int[] {22, 23, 24, 31, 32, 33};
         }
@@ -25,7 +25,7 @@ namespace Felli
             return w;
         }
 
-        public int SetPeace(int piece, char direction, int turno)
+        public void SetPeace(int piece, char direction, int turno)
         {
             int[] bw;
             int[] wb;
@@ -33,6 +33,7 @@ namespace Felli
             int move;
             int movement;
             int check;
+
             if ((turno % 2) == 0)
             {
                 bw = w;
@@ -47,38 +48,42 @@ namespace Felli
             switch (direction)
             {
                 case 's':
-                movement = 3;
+                    movement = 3;
                     foreach(int j in boardpos)
                     {
                         if (j == bw[piece - 1])
                         {
                             if (boardpos[i + 3] != 0)
                             {
-                                move = CheckmoveStraight(bw, wb, i, movement);
+                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                i, movement, boardpos);
                                 if (move == 0)
                                 {
-                                    return 0;
+                                    Output.InvalidMove();
+                                    break;
                                 }
                                 else if(move == 1)
                                 {
                                     bw[piece - 1] = boardpos[i + movement];
-                                    return 1;
+                                    break;
+                                    
                                 }
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
-                                    return 1;
+                                    break;
+                                    
                                 } 
                             }
                             else
                             {
                                 Output.InvalidMove();
-                                return 0;
+                                break;
                             }
                         }
                         i += 1;
                     }
-                    return 0;
+                    break;
                 case 'w':
                     movement = -3;
                     foreach(int j in boardpos)
@@ -87,31 +92,33 @@ namespace Felli
                         {
                             if (boardpos[i - 3] != 0)
                             {
-                                move = CheckmoveStraight(bw, wb, i, movement);
+                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                i, movement, boardpos);
                                 if (move == 0)
                                 {
-                                    return 0;
+                                    Output.InvalidMove();
+                                    break;
                                 }
                                 else if(move == 1)
                                 {
                                     bw[piece - 1] = boardpos[i + movement];
-                                    return 1;
+                                    break;
                                 }
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
-                                    return 1;
+                                    break;
                                 } 
                             }
                             else
                             {
                                 Output.InvalidMove();
-                                return 0;
+                                break;
                             }
                         }
                         i += 1;
                     }
-                    return 0;
+                    break;
                 case 'a':
                     movement = -1;
                     foreach(int j in boardpos)
@@ -120,31 +127,33 @@ namespace Felli
                         {
                             if (boardpos[i - 1] != 0)
                             {
-                                move = CheckmoveStraight(bw, wb, i, movement);
+                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                i, movement, boardpos);
                                 if (move == 0)
                                 {
-                                    return 0;
+                                    Output.InvalidMove();
+                                    break;
                                 }
                                 else if(move == 1)
                                 {
                                     bw[piece - 1] = boardpos[i + movement];
-                                    return 1;
+                                    break;
                                 }
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
-                                    return 1;
+                                    break;
                                 } 
                             }
                             else
                             {
                                 Output.InvalidMove();
-                                return 0;
+                                break;
                             }
                         }
                         i += 1;
                     }
-                    return 0;
+                    break;
                 case 'd':
                     movement = +1;
                     foreach(int j in boardpos)
@@ -153,31 +162,33 @@ namespace Felli
                         {
                             if (boardpos[i + 1] != 0)
                             {
-                                move = CheckmoveStraight(bw, wb, i, movement);
+                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                i, movement, boardpos);
                                 if (move == 0)
                                 {
-                                    return 0;
+                                    Output.InvalidMove();
+                                    break;
                                 }
                                 else if(move == 1)
                                 {
                                     bw[piece - 1] = boardpos[i + movement];
-                                    return 1;
+                                    break;
                                 }
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
-                                    return 1;
+                                    break;
                                 } 
                             }
                             else
                             {
                                 Output.InvalidMove();
-                                return 0;
+                                break;
                             }
                         }
                         i += 1;
                     }
-                    return 0;
+                    break;
                 case 'q':
                     foreach(int j in boardpos)
                     {
@@ -189,29 +200,29 @@ namespace Felli
                             {
                                 if (boardpos[i - 3] != 0)
                                 {
-                                    move = 
-                                    CheckmoveDiagonal(bw, wb, i, 
-                                    movement, check);
+                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    i, movement, check, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] = boardpos[i + movement];
-                                        return 1;
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
@@ -222,35 +233,36 @@ namespace Felli
                             {
                                 if (boardpos[i - 4] != 0)
                                 {
-                                    move = 
-                                    CheckmoveStraight(bw, wb, i, movement);
+                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] =
-                                         boardpos[i + movement];
-                                        return 1;
+                                        boardpos[i + movement];
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
                         }
                     }
-                    return 0;
+                    break;
                 case 'z':
                     foreach(int j in boardpos)
                     {
@@ -262,29 +274,29 @@ namespace Felli
                             {
                                 if (boardpos[i + 3] != 0)
                                 {
-                                    move = 
-                                    CheckmoveDiagonal(bw, wb, i, 
-                                    movement, check);
+                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    i, movement, check, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] = boardpos[i + movement];
-                                        return 1;
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
@@ -295,39 +307,39 @@ namespace Felli
                             {
                                 if (boardpos[i + 2] != 0)
                                 {
-                                    move = 
-                                    CheckmoveStraight(bw, wb, i, movement);
+                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] =
-                                         boardpos[i + movement];
-                                        return 1;
+                                        boardpos[i + movement];
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
                         }
                     }
-                    return 0;
+                    break;
                 case 'e':
                     foreach(int j in boardpos)
                     {
-                        Console.WriteLine (i);
                         if( j == 14 || j == 31)
                         {
                             movement = -3;
@@ -336,29 +348,29 @@ namespace Felli
                             {
                                 if (boardpos[i - 3] != 0)
                                 {
-                                    move = 
-                                    CheckmoveDiagonal(bw, wb, i, 
-                                    movement, check);
+                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    i, movement, check, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] = boardpos[i + movement];
-                                        return 1;
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
@@ -370,37 +382,38 @@ namespace Felli
                             {
                                 if (boardpos[i - 2] != 0)
                                 {
-                                    move = 
-                                    CheckmoveStraight(bw, wb, i, movement);
+                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] =
-                                         boardpos[i + movement];
-                                        return 1;
+                                        boardpos[i + movement];
+                                        break;
+
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
                             i += 1;
                         }
                     }
-                    return 0;
+                    break;
                 case 'x':
-                
                     foreach(int j in boardpos)
                     {
                         if( j == 3 || j == 24)
@@ -411,31 +424,34 @@ namespace Felli
                             {
                                 if (boardpos[i + 3] != 0)
                                 {
-                                    move = 
-                                    CheckmoveDiagonal(bw, wb, i, movement, check);
+                                    
+                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    i, movement, check, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] = boardpos[i + movement];
-                                        return 1;
+                                        break;
+                                        
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
-                                        return 1;
+                                        break;
+                                        
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
-                            i += 1;
                         }
                         else
                         {
@@ -444,126 +460,37 @@ namespace Felli
                             {
                                 if (boardpos[i + 4] != 0)
                                 {
-                                    move = 
-                                    CheckmoveStraight(bw, wb, i, movement);
+                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
                                     if (move == 0)
                                     {
-                                        return 0;
+                                        Output.InvalidMove();
+                                        break;
                                     }
                                     else if(move == 1)
                                     {
                                         bw[piece - 1] =
                                          boardpos[i + movement];
-                                        return 1;
+                                        break;
                                     }
                                     else if(move == 2)
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
-                                        return 1;
+                                        break;
                                     }
                                 }
                                 else
                                 {
                                     Output.InvalidMove();
-                                    return 0;
+                                    break;
                                 }
                             }
-                            i += 1;
                         }
+                        i += 1;
                     }
-                    return 0;
+                    break;
             } 
-            return 0;
-        }
-
-        public int CheckmoveStraight(int[] myArrayOne, int[] myArrayTwo, int i, 
-        int move)
-        {   
-            int myIndex = -1;
-            myIndex = Array.IndexOf(myArrayOne, boardpos[i + move]);
-            if(myIndex == -1)
-            {
-                myIndex = Array.IndexOf(myArrayTwo, boardpos[i + move]);
-                if(myIndex == -1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    myIndex = -1;
-                    myIndex = Array.IndexOf(myArrayOne, boardpos[i + (2*move)]);
-                    if(myIndex == -1)
-                    {
-                        myIndex = Array.IndexOf(myArrayTwo, 
-                        boardpos[i + (2*move)]);
-                        if (myIndex == -1)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            Output.OnTopOfOtherPieces();
-                            return 0;
-                        }
-                    }
-                    else
-                    {
-                        Output.OnTopOfOtherPieces();
-                        return 0;
-                    }  
-                }
-            }
-            else
-            {
-                Output.OnTopOfOtherPieces();
-                return 0;
-            }
-        }
-
-        public int CheckmoveDiagonal(int[] myArrayOne, int[] myArrayTwo, 
-        int i, int move, int check)
-        {
-            int myIndex = -1;
-            myIndex = Array.IndexOf(myArrayOne, boardpos[i + move]);
-            if(myIndex == -1)
-            {
-                myIndex = Array.IndexOf(myArrayTwo, boardpos[i + move]);
-                if(myIndex == -1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    myIndex = -1;
-                    myIndex = 
-                    Array.IndexOf(myArrayOne, boardpos[i + (2*move+check)]);
-                    if(myIndex == -1)
-                    {
-                        myIndex = Array.IndexOf(myArrayTwo, 
-                        boardpos[i + (2*move+check)]);
-                        if (myIndex == -1)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            Output.OnTopOfOtherPieces();
-                            return 0;
-                        }
-                    }
-                    else
-                    {
-                        Output.OnTopOfOtherPieces();
-                        return 0;
-                    }  
-                }
-            }
-            else
-            {
-                Output.OnTopOfOtherPieces();
-                return 0;
-            }
         }
     }
 }

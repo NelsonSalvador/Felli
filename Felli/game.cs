@@ -49,6 +49,7 @@ namespace Felli
             bool gamestarted = false;
             bool validmove = false;
             int validation = 0;
+            
             do
             {
                 Output.instructions();
@@ -80,7 +81,9 @@ namespace Felli
                     {
                         z.piece = Convert.ToInt32(Console.ReadLine());
                         z.direction = Convert.ToChar(Console.ReadLine());
-                        validation = a.SetPeace(z.piece, z.direction, turno);
+                        CheckMove.Inicialize();
+                        a.SetPeace(z.piece, z.direction, turno);
+                        validation = CheckMove.Validation(-1);
                         if (validation == 1)
                         { 
                             validmove = true;

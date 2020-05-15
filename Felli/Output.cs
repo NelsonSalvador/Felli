@@ -6,8 +6,18 @@ namespace Felli
     {
         public static void startOutput()
         {
-            Console.WriteLine("Chose the starting color ");
-            Console.Write("(Black: b) (White: W): ");
+            Console.Write("Chose the starting color ");
+            Console.Write("(Black: b) (White: W): \n");
+        }
+
+        public static void OnTopOfOtherPieces()
+        {
+            Console.WriteLine("You can't overlap pieces!");
+        }
+
+        public static void InvalidMove()
+        {
+            Console.WriteLine("Invalid Move!");
         }
             
             

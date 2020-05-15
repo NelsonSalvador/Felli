@@ -10,7 +10,7 @@ namespace Felli
         public Positions ()
         {
             //position of black pieces in the board
-            b = new int[] {3, 4, 5, 12};
+            b = new int[] {3, 4, 5, 12, 13, 14};
             //position of white pieces in the board
             w = new int[] {22, 23, 24, 31, 32, 33};
         }
@@ -25,7 +25,7 @@ namespace Felli
             return w;
         }
 
-        public void SetPeace(int piece, char direction, int turno)
+        public void SetPeace(int piece, char direction, int turno, CheckMove z)
         {
             int[] bw;
             int[] wb;
@@ -55,7 +55,7 @@ namespace Felli
                         {
                             if (boardpos[i + 3] != 0)
                             {
-                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
@@ -92,7 +92,7 @@ namespace Felli
                         {
                             if (boardpos[i - 3] != 0)
                             {
-                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
@@ -127,7 +127,7 @@ namespace Felli
                         {
                             if (boardpos[i - 1] != 0)
                             {
-                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
@@ -162,7 +162,7 @@ namespace Felli
                         {
                             if (boardpos[i + 1] != 0)
                             {
-                                move = CheckMove.CheckmoveStraight(bw, wb,
+                                move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
@@ -200,7 +200,7 @@ namespace Felli
                             {
                                 if (boardpos[i - 3] != 0)
                                 {
-                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    move = z.CheckmoveDiagonal(bw, wb,
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
@@ -233,7 +233,7 @@ namespace Felli
                             {
                                 if (boardpos[i - 4] != 0)
                                 {
-                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    move = z.CheckmoveStraight(bw, wb,
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
@@ -274,7 +274,7 @@ namespace Felli
                             {
                                 if (boardpos[i + 3] != 0)
                                 {
-                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    move = z.CheckmoveDiagonal(bw, wb,
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
@@ -307,7 +307,7 @@ namespace Felli
                             {
                                 if (boardpos[i + 2] != 0)
                                 {
-                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    move = z.CheckmoveStraight(bw, wb,
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
@@ -348,7 +348,7 @@ namespace Felli
                             {
                                 if (boardpos[i - 3] != 0)
                                 {
-                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    move = z.CheckmoveDiagonal(bw, wb,
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
@@ -382,7 +382,7 @@ namespace Felli
                             {
                                 if (boardpos[i - 2] != 0)
                                 {
-                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    move = z.CheckmoveStraight(bw, wb,
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
@@ -425,7 +425,7 @@ namespace Felli
                                 if (boardpos[i + 3] != 0)
                                 {
                                     
-                                    move = CheckMove.CheckmoveDiagonal(bw, wb,
+                                    move = z.CheckmoveDiagonal(bw, wb,
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
@@ -460,7 +460,7 @@ namespace Felli
                             {
                                 if (boardpos[i + 4] != 0)
                                 {
-                                    move = CheckMove.CheckmoveStraight(bw, wb,
+                                    move = z.CheckmoveStraight(bw, wb,
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {

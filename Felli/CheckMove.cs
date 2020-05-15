@@ -21,7 +21,6 @@ namespace Felli
                 return validationArray[1];
             }
         }
-
         public int CheckmoveStraight(int[] myArrayOne, int[] myArrayTwo, int i, 
         int move, int[] boardpos)
         {   

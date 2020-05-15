@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 namespace Felli
 {
     public class Positions
@@ -27,6 +28,7 @@ namespace Felli
 
         public void SetPeace(int piece, char direction, int turno, CheckMove z)
         {
+            int piece_remove;
             int[] bw;
             int[] wb;
             int i = 0;
@@ -47,6 +49,9 @@ namespace Felli
 
             switch (direction)
             {
+                default:
+                    Output.invalidInput();
+                    break;
                 case 's':
                     movement = 3;
                     foreach(int j in boardpos)
@@ -71,8 +76,19 @@ namespace Felli
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
-                                    break;
-                                    
+                                    piece_remove = Array.IndexOf(wb, boardpos[i 
+                                    + movement]);
+                                    if (wb == b)
+                                    {
+                                        b = b.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
+                                    else
+                                    {
+                                        w = w.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
+                                    break;                                   
                                 } 
                             }
                             else
@@ -107,6 +123,18 @@ namespace Felli
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
+                                    piece_remove = Array.IndexOf(wb, boardpos[i 
+                                    + movement]);
+                                    if (wb == b)
+                                    {
+                                        b = b.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
+                                    else
+                                    {
+                                        w = w.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
                                     break;
                                 } 
                             }
@@ -142,6 +170,18 @@ namespace Felli
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
+                                    piece_remove = Array.IndexOf(wb, boardpos[i 
+                                    + movement]);
+                                    if (wb == b)
+                                    {
+                                        b = b.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
+                                    else
+                                    {
+                                        w = w.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
                                     break;
                                 } 
                             }
@@ -177,6 +217,18 @@ namespace Felli
                                 else if(move == 2)
                                 {
                                     bw[piece - 1] = boardpos[i + (2*movement)];
+                                    piece_remove = Array.IndexOf(wb, boardpos[i 
+                                    + movement]);
+                                    if (wb == b)
+                                    {
+                                        b = b.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
+                                    else
+                                    {
+                                        w = w.Where((source, index) => index !=
+                                        piece_remove).ToArray();
+                                    }
                                     break;
                                 } 
                             }
@@ -216,6 +268,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
+                                        piece_remove = 
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -250,6 +314,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
+                                        piece_remove = 
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -290,6 +366,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
+                                        piece_remove = 
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -324,6 +412,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
+                                        piece_remove =
+                                        Array.IndexOf(wb, boardpos[i + movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -364,6 +464,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
+                                        piece_remove =
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -400,6 +512,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
+                                        piece_remove = 
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            !=piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }
@@ -442,6 +566,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = boardpos[i + 
                                         (2*movement + check)];
+                                        piece_remove =
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                         
                                     }
@@ -477,6 +613,18 @@ namespace Felli
                                     {
                                         bw[piece - 1] = 
                                         boardpos[i + (2*movement)];
+                                        piece_remove = 
+                                        Array.IndexOf(wb, boardpos[i+movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => index
+                                            != piece_remove).ToArray();
+                                        }
                                         break;
                                     }
                                 }

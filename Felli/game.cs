@@ -11,7 +11,6 @@ namespace Felli
         }
         public static int positions(int i, Positions a)
         {
-
             int[] b = a.GetB();
             int[] w = a.GetW();
             int peace = 1;
@@ -41,7 +40,7 @@ namespace Felli
             }
             return 0;
         }
-        public static void gameloop(Positions a)
+        public static void gameloop(Positions a, CheckMove z)
         {
             int turncounter;
             int turno = 0;
@@ -49,6 +48,7 @@ namespace Felli
             bool gamestarted = false;
             bool validmove = false;
             int validation = 0;
+
             
             do
             {
@@ -76,14 +76,13 @@ namespace Felli
                 else
                 {
                     turncounter = turn(turno);
-                    TurnInformation z;
+                    TurnInformation w;
                     while (validmove == false)
                     {
-                        z.piece = Convert.ToInt32(Console.ReadLine());
-                        z.direction = Convert.ToChar(Console.ReadLine());
-                        CheckMove.Inicialize();
-                        a.SetPeace(z.piece, z.direction, turno);
-                        validation = CheckMove.Validation(-1);
+                        w.piece = Convert.ToInt32(Console.ReadLine());
+                        w.direction = Convert.ToChar(Console.ReadLine());
+                        a.SetPeace(w.piece, w.direction, turno, z);
+                        validation = z.Validation(-1);
                         if (validation == 1)
                         { 
                             validmove = true;

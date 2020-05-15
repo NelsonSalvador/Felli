@@ -3,13 +3,13 @@ namespace Felli
 {
     public class CheckMove
     {
-        public static int[] validationArray;
-
-        public static void Inicialize()
+        private int[] validationArray;
+        public CheckMove()
         {
             validationArray = new int[] {0, 0};
         }
-        public static int Validation(int validnumber)
+        
+        public int Validation(int validnumber)
         {
             if (validnumber != -1){
                 validationArray[1] = validnumber;
@@ -22,7 +22,7 @@ namespace Felli
             }
         }
 
-        public static int CheckmoveStraight(int[] myArrayOne, int[] myArrayTwo, int i, 
+        public int CheckmoveStraight(int[] myArrayOne, int[] myArrayTwo, int i, 
         int move, int[] boardpos)
         {   
             int temp;
@@ -72,7 +72,7 @@ namespace Felli
             }
         }
 
-        public static int CheckmoveDiagonal(int[] myArrayOne, int[] myArrayTwo, 
+        public int CheckmoveDiagonal(int[] myArrayOne, int[] myArrayTwo, 
         int i, int move, int check, int[] boardpos)
         {
             int temp;

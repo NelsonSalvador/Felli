@@ -3,6 +3,7 @@ namespace Felli
 {
     public class Game
     {
+        Output output = new Output();
         public struct TurnInformation
         {
             public int piece;
@@ -39,7 +40,7 @@ namespace Felli
             }
             return 0;
         }
-        public static void gameloop(Positions a, CheckMove z)
+        public void gameloop(Positions a, CheckMove z)
         {
             int turncounter;
             int turno = 0;
@@ -49,18 +50,17 @@ namespace Felli
             int validation = 0;
             int lengthB;
             int lengthW;
-            int[] b;
-            int[] w;
+            int[] b = a.GetB();
+            int[] w = a.GetW();
             string second_input;
             
             do
             {
-               
-                Output.instructions();
-                Output.printBoard(a);
+                output.instructions();
+                output.printBoard(a);
                 if (gamestarted == false)
                 {
-                    Output.startOutput();
+                    output.startOutput();
                     string firstplayer = Console.ReadLine();
                     if (firstplayer == "b")
                     {
@@ -74,13 +74,11 @@ namespace Felli
                     }
                     else
                     {
-                        Output.invalidInput();
+                        output.invalidInput();
                     }
                 }
                 else
                 {
-                    b = a.GetB();
-                    w = a.GetW();
                     lengthB = b.Length;
                     lengthW = w.Length;
                     if (lengthB != 0 && lengthW != 0)
@@ -95,12 +93,8 @@ namespace Felli
                                 c.direction = Convert.ToChar(Console.ReadLine());
                                 a.SetPeace(c.piece, c.direction, turno, z);
                                 validation = z.Validation(-1);
-                                if (validation == -1 || validation == 0)
+                                if (validation == 1)
                                 { 
-                                    
-                                }
-                                else
-                                {
                                     validmove = true;
                                 }
                             }
@@ -110,7 +104,7 @@ namespace Felli
                             }
                             else
                             {
-                                Output.invalidInput();
+                                output.invalidInput();
                             }
                         }
                         validmove = false;
@@ -118,18 +112,18 @@ namespace Felli
                     }
                     else
                     {
-                        gamend();
+                        gameover = true;
                     }
                 }
             } while (gameover == false);
         }
-        public static int turn(int turn)
+        public int turn(int turn)
         {
-            Output.turnOutput(turn);
+            output.turnOutput(turn);
             turn++;
             return turn;
         }
-        public static void gamend()
+        public void gamend()
         {
             System.Environment.Exit(0);
         }

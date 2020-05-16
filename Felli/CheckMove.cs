@@ -44,17 +44,26 @@ namespace Felli
                     {
                         myIndex = Array.IndexOf(myArrayTwo, 
                         boardpos[i + (2*move)]);
-                        if (myIndex == -1)
+                        if (boardpos[i + (2*move)] != 0)
                         {
-                            temp = Validation(1);
-                            return 2;
+                            if (myIndex == -1)
+                            {
+                                temp = Validation(1);
+                                return 2;
+                            }
+                            else
+                            {
+                                temp = Validation(0);
+
+                                return 0;
+                            }
                         }
                         else
                         {
                             temp = Validation(0);
 
                             return 0;
-                        }
+                        }  
                     }
                     else
                     {
@@ -94,18 +103,27 @@ namespace Felli
                     if(myIndex == -1)
                     {
                         myIndex = Array.IndexOf(myArrayTwo, 
-                        boardpos[i + (2*move+check)]);
-                        if (myIndex == -1)
+                        boardpos[i + ((2*move)+check)]);
+                        if (boardpos[i + ((2*move)+check)] != 0)
                         {
-                            temp = Validation(1);
-                            return 2;
+                            if (myIndex == -1)
+                            {
+                                temp = Validation(1);
+                                return 2;
+                            }
+                            else
+                            {
+                                temp = Validation(0);
+
+                                return 0;
+                            }
                         }
                         else
                         {
                             temp = Validation(0);
 
                             return 0;
-                        }
+                        }  
                     }
                     else
                     {

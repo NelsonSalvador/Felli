@@ -3,6 +3,7 @@ namespace Felli
 {
     public class CheckMove
     {
+        Output output = new Output();
         private int[] validationArray;
         public CheckMove()
         {
@@ -51,14 +52,14 @@ namespace Felli
                         else
                         {
                             temp = Validation(0);
-                            Output.OnTopOfOtherPieces();
+                            output.OnTopOfOtherPieces();
                             return 0;
                         }
                     }
                     else
                     {
                         temp = Validation(0);
-                        Output.OnTopOfOtherPieces();
+                        output.OnTopOfOtherPieces();
                         return 0;
                     }  
                 }
@@ -66,7 +67,7 @@ namespace Felli
             else
             {
                 temp = Validation(0);
-                Output.OnTopOfOtherPieces();
+                output.OnTopOfOtherPieces();
                 return 0;
             }
         }
@@ -102,14 +103,14 @@ namespace Felli
                         else
                         {
                             temp = Validation(0);
-                            Output.OnTopOfOtherPieces();
+                            output.OnTopOfOtherPieces();
                             return 0;
                         }
                     }
                     else
                     {
                         temp = Validation(0);
-                        Output.OnTopOfOtherPieces();
+                        output.OnTopOfOtherPieces();
                         return 0;
                     }  
                 }
@@ -117,7 +118,7 @@ namespace Felli
             else
             {
                 temp = Validation(0);
-                Output.OnTopOfOtherPieces();
+                output.OnTopOfOtherPieces();
                 return 0;
             }
         }

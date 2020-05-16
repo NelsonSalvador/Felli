@@ -4,27 +4,27 @@ namespace Felli
 {
     public class Output
     {
-        public static void startOutput()
+        public void startOutput()
         {
             Console.Write("Chose the starting color ");
             Console.Write("(Black: b) (White: W): \n");
         }
 
-        public static void OnTopOfOtherPieces()
+        public void OnTopOfOtherPieces()
         {
             Console.WriteLine("You can't overlap pieces!");
         }
 
-        public static void InvalidMove()
+        public void InvalidMove()
         {
             Console.WriteLine("Invalid Move!");
         }
             
             
-        public static void invalidInput() =>
+        public void invalidInput() =>
             Console.WriteLine("Invalid Input");
 
-        public static void turnOutput(int turn)
+        public void turnOutput(int turn)
         {
             if ((turn % 2) == 0)
             {
@@ -36,7 +36,7 @@ namespace Felli
             }
         }
 
-        public static void instructions()
+        public void instructions()
         {
             Console.Clear();
             Console.WriteLine("\n Welcome to Felli");
@@ -55,7 +55,7 @@ namespace Felli
             Console.Write("Please pick a color to go first \n");
         }
 
-        public static void printBoard(Positions a)
+        public void printBoard(Positions a)
         {
             int peace;
             for (int i = 0; i < 38; i++)

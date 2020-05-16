@@ -3,6 +3,7 @@ namespace Felli
 {
     public class Game
     {
+        Output output = new Output();
         public struct TurnInformation
         {
             public int piece;
@@ -39,7 +40,7 @@ namespace Felli
             }
             return 0;
         }
-        public static void gameloop(Positions a, CheckMove z)
+        public void gameloop(Positions a, CheckMove z)
         {
             int turncounter;
             int turno = 0;
@@ -55,11 +56,11 @@ namespace Felli
             
             do
             {
-                Output.instructions();
-                Output.printBoard(a);
+                output.instructions();
+                output.printBoard(a);
                 if (gamestarted == false)
                 {
-                    Output.startOutput();
+                    output.startOutput();
                     string firstplayer = Console.ReadLine();
                     if (firstplayer == "b")
                     {
@@ -73,7 +74,7 @@ namespace Felli
                     }
                     else
                     {
-                        Output.invalidInput();
+                        output.invalidInput();
                     }
                 }
                 else
@@ -103,7 +104,7 @@ namespace Felli
                             }
                             else
                             {
-                                Output.invalidInput();
+                                output.invalidInput();
                             }
                         }
                         validmove = false;
@@ -116,13 +117,13 @@ namespace Felli
                 }
             } while (gameover == false);
         }
-        public static int turn(int turn)
+        public int turn(int turn)
         {
-            Output.turnOutput(turn);
+            output.turnOutput(turn);
             turn++;
             return turn;
         }
-        public static void gamend()
+        public void gamend()
         {
             System.Environment.Exit(0);
         }

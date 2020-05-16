@@ -346,6 +346,13 @@ namespace Felli
                             movement = -4;
                             if (j == bw[piece - 1])
                             {
+                                if (j == 13 || j == 22)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
+
                                 if (boardpos[i - 4] != 0)
                                 {
                                     move = z.CheckmoveStraight(bw, wb,
@@ -456,6 +463,13 @@ namespace Felli
                             movement = 2;
                             if (j == bw[piece - 1])
                             {
+                                if (j == 3 || j == 12 || j == 23 || j == 31)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
+
                                 if (boardpos[i + 2] != 0)
                                 {
                                     move = z.CheckmoveStraight(bw, wb,
@@ -567,6 +581,12 @@ namespace Felli
                             movement = -2;
                             if (j == bw[piece - 1])
                             {
+                                if (j == 24 || j == 33 || j == 5 || j == 13)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
                                 if (boardpos[i - 2] != 0)
                                 {
                                     move = z.CheckmoveStraight(bw, wb,
@@ -681,6 +701,13 @@ namespace Felli
                             movement = 4;
                             if (j == bw[piece - 1])
                             {
+                                if (j == 14 || j == 23)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
+
                                 if (boardpos[i + 4] != 0)
                                 {
                                     move = z.CheckmoveStraight(bw, wb,

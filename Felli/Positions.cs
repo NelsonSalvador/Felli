@@ -102,7 +102,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -156,7 +158,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -219,7 +223,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -273,7 +279,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+                                      
                                         break;
                                     }
                                     else if(move == 1)
@@ -336,7 +344,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -390,7 +400,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -455,7 +467,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)
@@ -511,7 +525,9 @@ namespace Felli
                                     if (move == 0)
                                     {
                                         temp = z.Validation(0);
+
                                         output.InvalidMove();
+
                                         break;
                                     }
                                     else if(move == 1)

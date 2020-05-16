@@ -68,6 +68,7 @@ namespace Felli
             //loop principal do jogo
             do
             {
+
                 possiblemoves = 0;
                 output.instructions();
                 output.printBoard(a);
@@ -135,12 +136,15 @@ namespace Felli
                             //número ou não
                             if (int.TryParse(second_input, out c.piece))
                             {
+
                                 c.direction=Convert.ToChar(Console.ReadLine());
                                 //método que irá definir e verificar o movimento
                                 //das peças
                                 a.SetPeace(c.piece, c.direction, turno, z);
                                 validation = z.Validation(-1);
-                                if (validation == 1)
+
+                                if (validation != 0)
+
                                 { 
                                     validmove = true;
                                 }
@@ -160,7 +164,17 @@ namespace Felli
                     }
                     else
                     {
-                        gameover = true;
+
+                        if (lengthB == 0)
+                        {
+                            //White wins
+                        }
+                        else
+                        {
+                            //Black wins
+                        }
+                        gamend();
+
                     }
                 }
             } while (gameover == false);

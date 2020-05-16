@@ -2,28 +2,39 @@ using System;
 
 namespace Felli
 {
+    /// <summary>
+    /// Class Output tem todo o que é escrito na consola, e todas as outras
+    /// classes irão instanciar um output para puderem utilizar input
+    /// </summary>
     public class Output
     {
+        //A primeira pergunta que é feita ao jogador
         public void startOutput()
         {
             Console.Write("Chose the starting color ");
             Console.Write("(Black: b) (White: W): \n");
         }
-
-        public void OnTopOfOtherPieces()
-        {
-            Console.WriteLine("You can't overlap pieces!");
-        }
-
+        //Sempre que o jogador tentar mover uma peça para um sítio onde não deve
+        //o código deverá chamar este método
         public void InvalidMove()
         {
             Console.WriteLine("Invalid Move!");
         }
+        public void WhitesWIn()
+        {
+            Console.WriteLine("White pieces win!");
+        }
+        public void BlacksWIn()
+        {
+            Console.WriteLine("Black pieces win!");
+        }
             
-            
+        //Se o jogador tentar dar um input que não corresponda ao pedido 
+        //o código deverá chamar este método
         public void invalidInput() =>
             Console.WriteLine("Invalid Input");
 
+        //Este método diz qual dos jogadores deve jogar
         public void turnOutput(int turn)
         {
             if ((turn % 2) == 0)
@@ -35,7 +46,8 @@ namespace Felli
                 Console.WriteLine("Black pieces turn");
             }
         }
-
+        //Este método imprime as instruções e limpa a consola cada vez que é
+        //chamado
         public void instructions()
         {
             Console.Clear();
@@ -51,8 +63,7 @@ namespace Felli
             Console.WriteLine("How to move your pieces: ");
             Console.Write("Your first input will be used to select which ");
             Console.Write("piece you wish to move, your second input ");
-            Console.Write("will be used to tell that piece where to move ");
-            Console.Write("Please pick a color to go first \n");
+            Console.Write("will be used to tell that piece where to move \n");
         }
 
         public void printBoard(Positions a)

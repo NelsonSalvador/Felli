@@ -2,6 +2,9 @@
 
 namespace Felli
 {
+    /// <summary>
+    /// classe Program cria uma instância do game 
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

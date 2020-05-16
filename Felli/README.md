@@ -65,6 +65,8 @@ jogadores ganhar.
 
 ### Diagrama UML
 
+![](DiagramaUML.png)
+
 ## Referências
 
 remover as peças do tabuleiro:
@@ -75,3 +77,9 @@ https://www.c-sharpcorner.com/UploadFile/c713c3/how-to-exit-in-C-Sharp/
 
 verficar se o input é um int:
 https://stackoverflow.com/questions/5395630/how-to-validate-user-input-for-whether-its-an-integer
+
+## Nota
+Queriamos adicionar que tentámos distruibuir o melhor possível as tarefas de
+cada um para ficar justo e achamos que como ficou no final está justo.
+Embora o Nelson não tenha commits mais para o final do projeto acompanhou e
+ajudou quando pedimos e precisámos.

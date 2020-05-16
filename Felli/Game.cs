@@ -1,7 +1,7 @@
 using System;
 namespace Felli
 {
-    public class game
+    public class Game
     {
         public struct TurnInformation
         {

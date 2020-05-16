@@ -8,7 +8,7 @@ namespace Felli
         {
             Positions a = new Positions();
             CheckMove z = new CheckMove();
-            game.gameloop(a , z);
+            Game.gameloop(a , z);
         }
     }
 }

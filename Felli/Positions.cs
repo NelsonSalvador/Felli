@@ -35,6 +35,7 @@ namespace Felli
             int move;
             int movement;
             int check;
+            int temp;
 
             if ((turno % 2) == 0)
             {
@@ -50,6 +51,7 @@ namespace Felli
             switch (direction)
             {
                 default:
+                    temp = z.Validation(0);
                     Output.invalidInput();
                     break;
                 case 's':
@@ -60,10 +62,17 @@ namespace Felli
                         {
                             if (boardpos[i + 3] != 0)
                             {
+                                if (j == 3 || j == 5 || j == 22 || j == 24)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
                                 move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -87,12 +96,14 @@ namespace Felli
                                     {
                                         w = w.Where((source, index) => index !=
                                         piece_remove).ToArray();
+                                        Console.WriteLine(w.Length);
                                     }
                                     break;                                   
                                 } 
                             }
                             else
                             {
+                                temp = z.Validation(0);
                                 Output.InvalidMove();
                                 break;
                             }
@@ -108,10 +119,17 @@ namespace Felli
                         {
                             if (boardpos[i - 3] != 0)
                             {
+                                if (j == 12 || j == 14 || j == 31 || j == 33)
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
                                 move = z.CheckmoveStraight(bw, wb,
                                 i, movement, boardpos);
                                 if (move == 0)
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -140,6 +158,7 @@ namespace Felli
                             }
                             else
                             {
+                                temp = z.Validation(0);
                                 Output.InvalidMove();
                                 break;
                             }
@@ -153,42 +172,57 @@ namespace Felli
                     {
                         if (j == bw[piece - 1])
                         {
-                            if (boardpos[i - 1] != 0)
+                            if ( j == 12 || j == 31)
                             {
-                                move = z.CheckmoveStraight(bw, wb,
-                                i, movement, boardpos);
-                                if (move == 0)
-                                {
-                                    Output.InvalidMove();
-                                    break;
-                                }
-                                else if(move == 1)
-                                {
-                                    bw[piece - 1] = boardpos[i + movement];
-                                    break;
-                                }
-                                else if(move == 2)
-                                {
-                                    bw[piece - 1] = boardpos[i + (2*movement)];
-                                    piece_remove = Array.IndexOf(wb, boardpos[i 
-                                    + movement]);
-                                    if (wb == b)
-                                    {
-                                        b = b.Where((source, index) => index !=
-                                        piece_remove).ToArray();
-                                    }
-                                    else
-                                    {
-                                        w = w.Where((source, index) => index !=
-                                        piece_remove).ToArray();
-                                    }
-                                    break;
-                                } 
+                                temp = z.Validation(0);
+                                Output.InvalidMove();
+                                break;
                             }
                             else
                             {
-                                Output.InvalidMove();
-                                break;
+
+                            
+                                if (boardpos[i - 1] != 0)
+                                {
+                                    move = z.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
+                                    if (move == 0)
+                                    {
+                                        temp = z.Validation(0);
+                                        Output.InvalidMove();
+                                        break;
+                                    }
+                                    else if(move == 1)
+                                    {
+                                        bw[piece - 1] = boardpos[i + movement];
+                                        break;
+                                    }
+                                    else if(move == 2)
+                                    {
+                                        bw[piece - 1] = boardpos
+                                        [i + (2*movement)];
+
+                                        piece_remove = Array.IndexOf(wb, 
+                                        boardpos[i + movement]);
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => 
+                                            index != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => 
+                                            index != piece_remove).ToArray();
+                                        }
+                                        break;
+                                    } 
+                                }
+                                else
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
                             }
                         }
                         i += 1;
@@ -200,42 +234,57 @@ namespace Felli
                     {
                         if (j == bw[piece - 1])
                         {
-                            if (boardpos[i + 1] != 0)
+                            if ( j == 14 || j == 33)
                             {
-                                move = z.CheckmoveStraight(bw, wb,
-                                i, movement, boardpos);
-                                if (move == 0)
-                                {
-                                    Output.InvalidMove();
-                                    break;
-                                }
-                                else if(move == 1)
-                                {
-                                    bw[piece - 1] = boardpos[i + movement];
-                                    break;
-                                }
-                                else if(move == 2)
-                                {
-                                    bw[piece - 1] = boardpos[i + (2*movement)];
-                                    piece_remove = Array.IndexOf(wb, boardpos[i 
-                                    + movement]);
-                                    if (wb == b)
-                                    {
-                                        b = b.Where((source, index) => index !=
-                                        piece_remove).ToArray();
-                                    }
-                                    else
-                                    {
-                                        w = w.Where((source, index) => index !=
-                                        piece_remove).ToArray();
-                                    }
-                                    break;
-                                } 
+                                temp = z.Validation(0);
+                                Output.InvalidMove();
+                                break;
                             }
                             else
                             {
-                                Output.InvalidMove();
-                                break;
+                                if (boardpos[i + 1] != 0)
+                                {
+                                    
+                                    move = z.CheckmoveStraight(bw, wb,
+                                    i, movement, boardpos);
+                                    if (move == 0)
+                                    {
+                                        temp = z.Validation(0);
+                                        Output.InvalidMove();
+                                        break;
+                                    }
+                                    else if(move == 1)
+                                    {
+                                        bw[piece - 1] = boardpos[i + movement];
+                                        break;
+                                    }
+                                    else if(move == 2)
+                                    {
+                                        bw[piece - 1] = 
+                                        boardpos[i + (2*movement)];
+
+                                        piece_remove = Array.IndexOf(wb,
+                                        boardpos[i + movement]);
+
+                                        if (wb == b)
+                                        {
+                                            b = b.Where((source, index) => 
+                                            index != piece_remove).ToArray();
+                                        }
+                                        else
+                                        {
+                                            w = w.Where((source, index) => 
+                                            index != piece_remove).ToArray();
+                                        }
+                                        break;
+                                    } 
+                                }
+                                else
+                                {
+                                    temp = z.Validation(0);
+                                    Output.InvalidMove();
+                                    break;
+                                }
                             }
                         }
                         i += 1;
@@ -247,7 +296,7 @@ namespace Felli
                         if( j == 12 || j == 33)
                         {
                             movement = -3;
-                            check = 1;
+                            check = -1;
                             if (j == bw[piece - 1])
                             {
                                 if (boardpos[i - 3] != 0)
@@ -256,6 +305,7 @@ namespace Felli
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -285,6 +335,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -301,6 +352,7 @@ namespace Felli
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -312,8 +364,16 @@ namespace Felli
                                     }
                                     else if(move == 2)
                                     {
-                                        bw[piece - 1] = 
-                                        boardpos[i + (2*movement)];
+                                        if (j == 18)
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement+1)];
+                                        }
+                                        else 
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement)];
+                                        }
                                         piece_remove = 
                                         Array.IndexOf(wb, boardpos[i+movement]);
                                         if (wb == b)
@@ -331,6 +391,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -354,6 +415,7 @@ namespace Felli
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -383,6 +445,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -399,6 +462,7 @@ namespace Felli
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -410,10 +474,18 @@ namespace Felli
                                     }
                                     else if(move == 2)
                                     {
-                                        bw[piece - 1] = 
-                                        boardpos[i + (2*movement)];
-                                        piece_remove =
-                                        Array.IndexOf(wb, boardpos[i + movement]);
+                                        if (j == 18)
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement+1)];
+                                        }
+                                        else 
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement)];
+                                        }
+                                        piece_remove = Array.IndexOf(wb, 
+                                        boardpos[i + movement]);
                                         if (wb == b)
                                         {
                                             b = b.Where((source, index) => index
@@ -429,6 +501,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -452,6 +525,7 @@ namespace Felli
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -481,6 +555,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -498,6 +573,7 @@ namespace Felli
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -510,8 +586,16 @@ namespace Felli
                                     }
                                     else if(move == 2)
                                     {
-                                        bw[piece - 1] = 
-                                        boardpos[i + (2*movement)];
+                                        if (j == 18)
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement-1)];
+                                        }
+                                        else 
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement)];
+                                        }
                                         piece_remove = 
                                         Array.IndexOf(wb, boardpos[i+movement]);
                                         if (wb == b)
@@ -529,6 +613,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -553,6 +638,7 @@ namespace Felli
                                     i, movement, check, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -584,6 +670,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }
@@ -600,6 +687,7 @@ namespace Felli
                                     i, movement, boardpos);
                                     if (move == 0)
                                     {
+                                        temp = z.Validation(0);
                                         Output.InvalidMove();
                                         break;
                                     }
@@ -611,8 +699,18 @@ namespace Felli
                                     }
                                     else if(move == 2)
                                     {
-                                        bw[piece - 1] = 
-                                        boardpos[i + (2*movement)];
+
+                                        if (j == 18)
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement-1)];
+                                        }
+                                        else 
+                                        {
+                                            bw[piece - 1] = 
+                                            boardpos[i + (2*movement)];
+                                        }
+                                        
                                         piece_remove = 
                                         Array.IndexOf(wb, boardpos[i+movement]);
                                         if (wb == b)
@@ -630,6 +728,7 @@ namespace Felli
                                 }
                                 else
                                 {
+                                    temp = z.Validation(0);
                                     Output.InvalidMove();
                                     break;
                                 }

@@ -38,7 +38,7 @@ namespace Felli
 
         public static void instructions()
         {
-            //Console.Clear();
+            Console.Clear();
             Console.WriteLine("\n Welcome to Felli");
             Console.Write("The main goal is to capture all of your opponents ");
             Console.Write("pieces by hoping over them or by making sure ");
@@ -82,7 +82,7 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    peace = game.positions(i, a);
+                    peace = Game.positions(i, a);
                     Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
@@ -126,7 +126,7 @@ namespace Felli
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.Write("  ");
 
-                    peace = game.positions(i, a);
+                    peace = Game.positions(i, a);
                     Console.Write(" {0} ", peace);
 
                     Console.BackgroundColor = ConsoleColor.Gray;
@@ -158,12 +158,12 @@ namespace Felli
                         Console.Write("               ");
                         
                         Console.BackgroundColor = ConsoleColor.Gray;
-                        peace = game.positions(i, a);
+                        peace = Game.positions(i, a);
                         if(j == 1)
                         {
                             Console.BackgroundColor = ConsoleColor.Gray;
                             Console.Write("  ");
-                            peace = game.positions(i, a);
+                            peace = Game.positions(i, a);
                             Console.Write(" {0} ", peace);
                             Console.BackgroundColor = ConsoleColor.Gray;
                             Console.Write("  ");

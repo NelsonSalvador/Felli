@@ -49,12 +49,13 @@ namespace Felli
             int validation = 0;
             int lengthB;
             int lengthW;
-            int[] b = a.GetB();
-            int[] w = a.GetW();
+            int[] b;
+            int[] w;
             string second_input;
             
             do
             {
+               
                 Output.instructions();
                 Output.printBoard(a);
                 if (gamestarted == false)
@@ -78,6 +79,8 @@ namespace Felli
                 }
                 else
                 {
+                    b = a.GetB();
+                    w = a.GetW();
                     lengthB = b.Length;
                     lengthW = w.Length;
                     if (lengthB != 0 && lengthW != 0)
@@ -92,8 +95,12 @@ namespace Felli
                                 c.direction = Convert.ToChar(Console.ReadLine());
                                 a.SetPeace(c.piece, c.direction, turno, z);
                                 validation = z.Validation(-1);
-                                if (validation == 1)
+                                if (validation == -1 || validation == 0)
                                 { 
+                                    
+                                }
+                                else
+                                {
                                     validmove = true;
                                 }
                             }
@@ -111,7 +118,7 @@ namespace Felli
                     }
                     else
                     {
-                        gameover = true;
+                        gamend();
                     }
                 }
             } while (gameover == false);

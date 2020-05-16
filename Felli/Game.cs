@@ -52,10 +52,12 @@ namespace Felli
             int[] b;
             int[] w;
             string second_input;
+            int[] boardpos;
+            int possiblemoves;
             
             do
             {
-               
+                possiblemoves = 0;
                 Output.instructions();
                 Output.printBoard(a);
                 if (gamestarted == false)
@@ -81,6 +83,28 @@ namespace Felli
                 {
                     b = a.GetB();
                     w = a.GetW();
+                    boardpos = a.boardpos;
+                    if ((turno % 2) == 0)
+                    {
+                        possiblemoves += z.CheckStuck(w, b, boardpos);
+                        
+                        if ( possiblemoves == 0)
+                        {
+                            //Black wins
+                            gamend();
+                        }
+                    }
+                    else
+                    {
+                        possiblemoves += z.CheckStuck(b, w, boardpos);
+                        
+                        if ( possiblemoves == 0)
+                        {
+                            //White wins
+                            gamend();
+                        }
+                    }
+
                     lengthB = b.Length;
                     lengthW = w.Length;
                     if (lengthB != 0 && lengthW != 0)
@@ -92,15 +116,11 @@ namespace Felli
                             second_input = Console.ReadLine();
                             if (int.TryParse(second_input, out c.piece))
                             {
-                                c.direction = Convert.ToChar(Console.ReadLine());
+                                c.direction =Convert.ToChar(Console.ReadLine());
                                 a.SetPeace(c.piece, c.direction, turno, z);
                                 validation = z.Validation(-1);
-                                if (validation == -1 || validation == 0)
+                                if (validation != 0)
                                 { 
-                                    
-                                }
-                                else
-                                {
                                     validmove = true;
                                 }
                             }
@@ -118,6 +138,14 @@ namespace Felli
                     }
                     else
                     {
+                        if (lengthB == 0)
+                        {
+                            //White wins
+                        }
+                        else
+                        {
+                            //Black wins
+                        }
                         gamend();
                     }
                 }
